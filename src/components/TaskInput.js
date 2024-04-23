@@ -11,7 +11,7 @@ const TaskInput = () => {
     <div className='addTodos'>
     <input type="text" onChange={handleChange} className='todo-input' />
 
-      <button className='add-btn'>Add</button>
+      <button className='add-btn'>Add bytton</button>
     </div>
   )
 }
