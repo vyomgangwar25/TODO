@@ -1,12 +1,14 @@
- 
+
 import './App.css';
+ 
 import TaskInput from './components/TaskInput';
+import TaskList from "./components/TaskList"
 
 function App() {
   return (
     <div className="App">
-       <h1>hello</h1>
-       <TaskInput/>
+      <TaskInput />
+      <TaskList />
     </div>
   );
 }

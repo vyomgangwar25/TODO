@@ -1,19 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToDo } from '../Reducers/toDoSlider';
 
 const TaskInput = () => {
-    const[todo,setTodo]=useState("");
+   const dispatch = useDispatch();
+   const [ state, setState ] = useState({
+       content: '',
+       contentError: null
+   });
 
-    const handleChange=(e)=>{
-        setTodo(e.target.value);
+   const handleChange = (e) =>{
+       setState({...state, [e.target.name]: e.target.value, [`${e.target.name}Error`]: null });
+   }
+
+   const add = () =>{
+    if(content === ''){
+        setState({...state, contentError: 'You must write something!'});
+        return;
     }
-  //  console.log(todo)
-  return (
-    <div className='addTodos'>
-    <input type="text" onChange={handleChange} className='todo-input' />
+    
+    dispatch(addToDo({newContent: content}));
+    setState({...state, content: ''});
+   }
+   const { content, contentError } = state;
+  return <div className='form'>
+      <h2>What's your plan for today</h2>
+      <input type='text' value={content} name='content' onChange={handleChange}></input>
+      <button type='button' className='button' onClick={add}>Add</button>
+      {contentError ? <div className='error'>{contentError}</div>: null}
+  </div>;
+};
 
-      <button className='add-btn'>Add bytton</button>
-    </div>
-  )
-}
-
-export default TaskInput
+export default TaskInput;
