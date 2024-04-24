@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiFillEdit, AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteToDo } from '../Reducers/toDoSlider';
 
